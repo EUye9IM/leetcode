@@ -1,0 +1,6 @@
+build/
+.a/
+.xmake/
+*.o
+*.obj
+a.out
