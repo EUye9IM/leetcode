@@ -33,17 +33,13 @@ public:
   }
 };
 
-TEST_CASE("isValid normal cases") {
+TEST_CASE("valid-parentheses") {
   Solution s;
   CHECK(s.isValid("()") == true);
   CHECK(s.isValid("()[]{}") == true);
   CHECK(s.isValid("(]") == false);
   CHECK(s.isValid("{{}}{{}}()()[][]") == true);
   CHECK(s.isValid("{{[[]}}") == false);
-}
-
-TEST_CASE("isValid edge cases") {
-  Solution s;
   CHECK(s.isValid("") == true);
   CHECK(s.isValid(")") == false);
   CHECK(s.isValid("}") == false);
