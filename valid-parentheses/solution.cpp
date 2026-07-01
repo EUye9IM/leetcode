@@ -1,5 +1,3 @@
-#include <iostream>
-#include <iterator>
 #include <string>
 #include <vector>
 using namespace std;
@@ -31,9 +29,3 @@ public:
     return true;
   }
 };
-
-int main() {
-  Solution s;
-  cout << s.isValid("{{}}{{}}()()[][]") << endl;
-  cout << s.isValid("{{[[]}}") << endl;
-}
