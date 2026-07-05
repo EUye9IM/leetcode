@@ -7,7 +7,7 @@
 lang=${2:-cpp}
 
 case $lang in
-  cpp)
+cpp)
     mkdir -p "$1"
     cat <<EOF >"$1/main.cpp"
 #include <bits/stdc++.h>
@@ -28,7 +28,7 @@ TEST_CASE("$1") {
 }
 EOF
     ;;
-  go)
+go)
     mkdir -p "$1"
     cat <<EOF >"$1/main.go"
 package main
@@ -39,6 +39,9 @@ import (
 )
 
 // https://leetcode.cn/problems/$1
+func solve() bool {
+    return true
+}
 
 func main() {
     if !solve() {
@@ -48,12 +51,9 @@ func main() {
     fmt.Println("All tests passed")
 }
 
-func solve() bool {
-    return true
-}
 EOF
     ;;
-  rs)
+rs)
     mkdir -p "$1"
     cat <<EOF >"$1/main.rs"
 use std::process;
@@ -73,7 +73,7 @@ fn solve() -> bool {
 }
 EOF
     ;;
-  *)
+*)
     echo "Unknown language: $lang (use cpp, go, or rs)"
     exit 1
     ;;
