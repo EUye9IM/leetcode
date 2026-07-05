@@ -26,9 +26,9 @@ if has_cpp then
 end
 
 local language_specs = {
-    {file = "main.cpp", lang = "cpp", suffix = "-cpp"},
-    {file = "main.go",  lang = "go",  suffix = "-go"},
-    {file = "main.rs",  lang = "rs",  suffix = "-rs"},
+    { file = "main.cpp", lang = "cpp", suffix = "" },
+    { file = "main.go",  lang = "go",  suffix = "" },
+    { file = "main.rs",  lang = "rs",  suffix = "" },
 }
 
 for _, dir in ipairs(os.dirs("*")) do
@@ -36,16 +36,16 @@ for _, dir in ipairs(os.dirs("*")) do
         local file = path.join(dir, spec.file)
         if os.isfile(file) then
             target(dir .. spec.suffix)
-                set_kind("binary")
-                set_default(false)
-                add_files(file)
-                if spec.lang == "cpp" then
-                    set_languages("c++20")
-                    set_warnings("all", "extra")
-                    add_cxflags("-Werror", "-pedantic-errors")
-                    add_packages("doctest")
-                end
-                add_tests("default")
+            set_kind("binary")
+            set_default(false)
+            add_files(file)
+            if spec.lang == "cpp" then
+                set_languages("c++20")
+                set_warnings("all", "extra")
+                add_cxflags("-Werror", "-pedantic-errors")
+                add_packages("doctest")
+            end
+            add_tests("default")
         end
     end
 end
