@@ -56,22 +56,33 @@ EOF
 rs)
     mkdir -p "$1"
     cat <<EOF >"$1/main.rs"
-use std::process;
-
 // https://leetcode.cn/problems/$1
-
-fn main() {
-    if !solve() {
-        eprintln!("Test failed");
-        process::exit(1);
+impl Solution {
+    pub fn solve() -> bool {
+        true
     }
+}
+
+struct Solution {}
+fn main() {
+    assert!(Solution::solve());
     println!("All tests passed");
 }
 
-fn solve() -> bool {
-    true
-}
 EOF
+    cat <<EOF >"$1/Cargo.toml"
+[package]
+name = "lc-$1"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "lc-$1"
+path = "main.rs"
+EOF
+    if [ -f Cargo.toml ]; then
+        sed -i "s/^members = \[/members = [\"$1\", /" Cargo.toml
+    fi
     ;;
 *)
     echo "Unknown language: $lang (use cpp, go, or rs)"

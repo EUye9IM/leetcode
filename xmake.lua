@@ -13,8 +13,18 @@ if has_config("has_clang") then
     set_toolchains("clang")
 end
 
-local has_cpp = false
+local skip_dirs = { build = true, target = true }
+
+local dirs = {}
 for _, dir in ipairs(os.dirs("*")) do
+    local name = path.basename(dir)
+    if not skip_dirs[name] and not name:startswith(".") then
+        table.insert(dirs, dir)
+    end
+end
+
+local has_cpp = false
+for _, dir in ipairs(dirs) do
     if os.isfile(path.join(dir, "main.cpp")) then
         has_cpp = true
         break
@@ -31,7 +41,7 @@ local language_specs = {
     { file = "main.rs",  lang = "rs",  suffix = "" },
 }
 
-for _, dir in ipairs(os.dirs("*")) do
+for _, dir in ipairs(dirs) do
     for _, spec in ipairs(language_specs) do
         local file = path.join(dir, spec.file)
         if os.isfile(file) then

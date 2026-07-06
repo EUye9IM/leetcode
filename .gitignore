@@ -1,7 +1,9 @@
 build/
 .a/
 .xmake/
+.cache/
 *.o
 *.obj
 a.out
 /compile_commands.json
+target/
