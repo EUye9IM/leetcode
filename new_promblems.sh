@@ -43,11 +43,13 @@ func solve() bool {
     return true
 }
 
+func assertEq(got, expect any) {
+	if !reflect.DeepEqual(expect, got) {
+		panic(fmt.Sprintf("got:  %v\nwant: %v", got, expect))
+	}
+}
 func main() {
-    if !solve() {
-        fmt.Println("Test failed")
-        os.Exit(1)
-    }
+    assertEq(solve(), true)
     fmt.Println("All tests passed")
 }
 
