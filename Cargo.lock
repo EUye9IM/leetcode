@@ -7,5 +7,5 @@ name = "lc-3sum"
 version = "0.1.0"
 
 [[package]]
-name = "lc-reverse-linked-list"
+name = "lc-sliding-window-maximum"
 version = "0.1.0"

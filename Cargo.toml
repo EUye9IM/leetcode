@@ -1,3 +1,3 @@
 [workspace]
 resolver = "2"
-members = ["reverse-linked-list", "3sum"]
+members = ["sliding-window-maximum", "3sum"]
